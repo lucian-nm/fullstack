@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 const Button = ({onClick, text}) => <button onClick = {onClick}> {text} </button>
-const StatisticsLine = ({title, number}) => <div> {title} {number} </div>
+const StatisticsLine = ({title, number}) => <tr><td>{title}</td><td>{number}</td></tr>
 
 const Statistics = ({good, bad, neutral}) => {
   const  all = good + bad + neutral
@@ -14,15 +14,17 @@ const Statistics = ({good, bad, neutral}) => {
     )
   } else {
     return (
-      <>
-	<StatisticsLine title = "good" number = {good} />
-	<StatisticsLine title = "neutral" number = {neutral} />
-	<StatisticsLine title = "bad" number = {bad} />
-	<StatisticsLine title = "all" number = {all} />
+      <table>
+        <tbody>
+	  <StatisticsLine title = "good" number = {good} />
+	  <StatisticsLine title = "neutral" number = {neutral} />
+	  <StatisticsLine title = "bad" number = {bad} />
+	  <StatisticsLine title = "all" number = {all} />
 
-	<StatisticsLine title = "average" number = {(good + -1 * bad) / all} />
-	<StatisticsLine title = "positive" number = {good / all} />
-      </>
+	  <StatisticsLine title = "average" number = {(good + -1 * bad) / all} />
+	  <StatisticsLine title = "positive" number = {good / all} />
+      	</tbody>
+      </table>
     )
   }
 }
